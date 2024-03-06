@@ -1,4 +1,4 @@
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e9aed493-5e34-4011-868d-8acc495287e8/deploy-status)](https://app.netlify.com/sites/badacorp-expense-tracker/deploys)
 
 # Expense Tracker
 
