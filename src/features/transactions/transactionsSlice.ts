@@ -12,34 +12,61 @@ export const CATEGORIES = [
   "entertainment",
 ] as const;
 
-type Category = (typeof CATEGORIES)[number];
-type Transaction = {
-  category: string;
+export type Category = (typeof CATEGORIES)[number];
+
+export interface Transaction {
+  category: Category;
   id: string;
   description: string;
   amount: number;
+  createdAt: string;
+}
+
+export type TransactionsState = Record<Category, Transaction[]>;
+
+export const createInitialTransactionsState = (): TransactionsState =>
+  Object.fromEntries(
+    CATEGORIES.map((category) => [category, []])
+  ) as unknown as TransactionsState;
+
+const initialState: TransactionsState = createInitialTransactionsState();
+
+const getTransactionTime = (transaction: {
+  createdAt?: string;
+  id?: string;
+}): number => {
+  if (transaction.createdAt) {
+    const parsed = Date.parse(transaction.createdAt);
+    if (!Number.isNaN(parsed)) {
+      return parsed;
+    }
+  }
+
+  return 0;
 };
-type State = Record<Category, Transaction[]>;
 
-const initialState: State = Object.fromEntries(
-  CATEGORIES.map((category) => [category, []])
-) as unknown as State;
-
-export const selectTransactions = (state: { transactions: State }) =>
+export const selectTransactions = (state: { transactions: TransactionsState }) =>
   state.transactions;
-export const selectFlattenedTransactions = (state: { transactions: State }) =>
-  Object.values(state.transactions).reduce((a, b) => [...a, ...b], []);
+
+export const selectFlattenedTransactions = (state: {
+  transactions: TransactionsState;
+}) =>
+  Object.values(state.transactions)
+    .flat()
+    .sort((transactionA, transactionB) => {
+      return getTransactionTime(transactionB) - getTransactionTime(transactionA);
+    });
 
 const transactionSlice = createSlice({
   name: "transactions",
-  initialState: initialState,
+  initialState,
   reducers: {
     addTransaction: (state, action: PayloadAction<Transaction>) => {
       state[action.payload.category].push(action.payload);
     },
     deleteTransaction: (
       state,
-      action: PayloadAction<{ category: string; id: string }>
+      action: PayloadAction<{ category: Category; id: string }>
     ) => {
       state[action.payload.category] = state[action.payload.category].filter(
         (item) => item.id !== action.payload.id

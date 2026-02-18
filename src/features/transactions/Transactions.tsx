@@ -7,9 +7,16 @@ import TransactionList from "../../components/TransactionList.tsx";
 const Transactions = () => {
   const transactions = useSelector(selectFlattenedTransactions);
   return (
-    <div className="comments-container">
+    <div className="transactions-stack">
+      <div className="panel-heading">
+        <h2 className="panel-title">Transaction History</h2>
+        <p className="panel-subtitle">
+          Capture expenses quickly and review a real-time history table of all
+          spending activity.
+        </p>
+      </div>
       <TransactionList transactions={transactions} />
-      <TransactionForm categories={undefined} />
+      <TransactionForm />
     </div>
   );
 };

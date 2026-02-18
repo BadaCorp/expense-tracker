@@ -13,19 +13,30 @@ interface TransactionProps {
 
 const Transaction: React.FC<TransactionProps> = ({ transaction }) => {
   const dispatch = useDispatch();
+  const formatCurrency = (value: number): string => `$${value.toFixed(2)}`;
 
-  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleDelete = () => {
     dispatch(deleteTransaction(transaction));
   };
 
   return (
     <li className="new-transaction">
-      <span>
-        {transaction.amount} – {transaction.category}{" "}
-        <span className="description">( {transaction.description} )</span>
-      </span>
-      <button onClick={handleDelete} aria-label="Remove">
-        X
+      <div className="transaction-main">
+        <span className="transaction-amount">
+          {formatCurrency(transaction.amount)}
+        </span>
+        <div>
+          <p className="transaction-category">{transaction.category}</p>
+          <p className="description">{transaction.description}</p>
+        </div>
+      </div>
+
+      <button
+        onClick={handleDelete}
+        className="delete-button"
+        aria-label="Remove transaction"
+      >
+        x
       </button>
     </li>
   );

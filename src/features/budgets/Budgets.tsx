@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import { selectBudgets } from "./budgetsSlice.ts";
 import Budget from "../../components/Budget.tsx";
 
-const Transactions = () => {
+const Budgets = () => {
   const budgets = useSelector(selectBudgets);
-  console.log(budgets);
+
   return (
-    <ul className="comments-container">
+    <ul className="budget-grid">
       {budgets.map((budget) => (
         <Budget budget={budget} key={budget.category} />
       ))}
@@ -15,4 +15,4 @@ const Transactions = () => {
   );
 };
 
-export default Transactions;
+export default Budgets;
