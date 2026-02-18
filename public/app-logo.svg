@@ -1,0 +1,24 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="32" y1="24" x2="224" y2="232" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E63F6"/>
+      <stop offset="1" stop-color="#29B388"/>
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EAF3FF"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="16" y="16" width="224" height="224" rx="52" fill="url(#bgGrad)"/>
+  <rect x="22" y="22" width="212" height="212" rx="46" stroke="white" stroke-opacity="0.15" stroke-width="2"/>
+
+  <path d="M128 56C88.2355 56 56 88.2355 56 128C56 167.764 88.2355 200 128 200C164.923 200 195.345 172.18 199.43 136.35H166.223C162.528 153.907 146.96 167.063 128.32 167.063C106.93 167.063 89.5938 149.727 89.5938 128.336C89.5938 106.945 106.93 89.6094 128.32 89.6094C146.91 89.6094 162.444 102.696 166.186 120.184H199.396C195.381 84.1232 164.814 56 128 56Z" fill="white" fill-opacity="0.28"/>
+
+  <rect x="104" y="122" width="20" height="54" rx="6" fill="url(#barGrad)"/>
+  <rect x="130" y="102" width="20" height="74" rx="6" fill="url(#barGrad)"/>
+  <rect x="156" y="82" width="20" height="94" rx="6" fill="url(#barGrad)"/>
+
+  <circle cx="84" cy="176" r="8" fill="#FFFFFF"/>
+  <path d="M84 176L103.5 159L123 166.5L143 145L165 133" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

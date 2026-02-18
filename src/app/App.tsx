@@ -60,6 +60,10 @@ const App: React.FC = () => {
     <div className="app-shell">
       <header className="app-hero">
         <div>
+          <div className="brand-row">
+            <img src="/app-logo.svg" alt="FinanceOS logo" className="brand-logo" />
+            <span className="brand-name">FinanceOS</span>
+          </div>
           <p className="eyebrow">Finance Workspace</p>
           <h1>Personal Finance Dashboard with Real-Time Budget Analytics</h1>
           <p className="hero-copy">
@@ -111,6 +115,10 @@ const App: React.FC = () => {
           </section>
         </div>
       </main>
+
+      <footer className="app-footer">
+        <p>Personal Finance Dashboard with Real-Time Budget Analytics</p>
+      </footer>
     </div>
   );
 };
